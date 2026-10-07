@@ -1,11 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component, NgModule, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule, NgModel } from '@angular/forms'; 
 import { Producte } from './interfaces/producte';
 import { Catgeoria } from './interfaces/categoria';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -13,7 +14,7 @@ import { Catgeoria } from './interfaces/categoria';
 export class App {
   
   
-
+   
   title = "Products List" ; 
   Productos_list= [
     {'Name' : 'Porduct 1',
@@ -119,9 +120,14 @@ export class App {
     'descripcion':'v10 motores '
   },
   ];
-  
-  addProduct(/*nom:any ,preu:any,estoc:any,categoria:any,foto:any*/){
+  nom =''; 
+  preu =0 ;
+  estoc =0; 
+  categoria='';
+  foto =''; 
 
+  addProduct(nom:any ,preu:any,estoc:any){
+    alert(nom+" "+preu+" "+estoc)
   }
   
 }

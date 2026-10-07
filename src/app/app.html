@@ -20,30 +20,104 @@
       </div>
     </div>
   </div>
-  <form action="">
-      <h2 class="mb-3">Añadir Productos</h2>
-      <label for="">Nombre Producto</label><br>
-      <input type="text" name="nom" id="nom"><br>
-      <label for="">Descripcion de Producto</label><br>
-      
-      <input type="text" name="desc"><br>
-      <label for="">Precio </label><br>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
 
-      <input type="text" name="precio"><br>
-      <label for="">Unidades en stock</label><br>
+      <div class="card shadow">
+        <div class="card-body p-4">
 
-      <input type="text" name="estoc"><br>
-      <label for="">Categoria </label><br>
-      <select name="categoria" id="categoria">
-        @for(cat of categorias;track cat.id){
-        <option value="{{cat.nom}}">{{cat.nom}}</option>
-        }
-      </select>
-      <label for="">Foto de Producto</label><br>
-      <input type="file" name="file">
-      <br>
-      <button type="button" (click)="addProduct()">Añadir Producto</button>
-  </form>
+          <h2 class="text-center mb-4">Añadir Producto</h2>
+
+          <form action="">
+
+            <div class="mb-3">
+              <label for="nom" class="form-label">Nombre Producto</label>
+              <input
+                type="text"
+                name="nom"
+                id="nom"
+                class="form-control"
+                placeholder="Introduce el nombre del producto" [(ngModel)]="nom">
+            </div>
+            @if(nom){
+            @if(nom.length<5 ){
+            <p style="color: red;"> {{nom}} longitud de texto muy corto</p>
+            }
+            @if(!nom.includes('@gmail.com')){
+              <p style="color: red;">{{nom}} No es formato de correo</p>
+            }@else{
+              <p style="color: green;">OK</p>
+            }
+          }
+            <div class="mb-3">
+              <label for="desc" class="form-label">Descripción de Producto</label>
+              <textarea
+                name="desc"
+                id="desc"
+                class="form-control"
+                rows="3"
+                placeholder="Introduce la descripción" ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input
+                type="number"
+                name="precio"
+                id="precio"
+                class="form-control"
+                placeholder="0.00"
+                step="0.01" [(ngModel)]="preu">
+            </div>
+
+            <div class="mb-3">
+              <label for="estoc" class="form-label">Unidades en stock</label>
+              <input
+                type="number"
+                name="estoc"
+                id="estoc"
+                class="form-control"
+                placeholder="Cantidad" [(ngModel)]="estoc">
+            </div>
+
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoría</label>
+              <select
+                name="categoria"
+                id="categoria"
+                class="form-select">
+
+                @for(cat of categorias; track cat.id) {
+                  <option value="{{cat.nom}}">
+                    {{cat.nom}}
+                  </option >
+                }
+
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="file" class="form-label">Foto de Producto</label>
+              <input
+                type="file"
+                name="file"
+                id="file"
+                class="form-control" >
+            </div>
+
+            <div class="d-grid">
+              <button  type="button"  class="btn btn-primary"  (click)="addProduct(nom,preu,estoc)">Añadir Producto</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
   <h2 class="mb-3">Productos</h2>
 
   <div class="row">
