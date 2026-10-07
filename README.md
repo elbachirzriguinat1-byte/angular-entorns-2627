@@ -29,7 +29,7 @@ Cada sessió té una branca amb el codi fet en directe a classe:
 | `lc/02-typescript-base` | Tipus, interfícies, classes |
 | `lc/03-components` | Crear i usar components |
 | `lc/04-interpolacio-dades` | Mostrar dades del TS al HTML |
-| `lc/05-control-flow-for` | @for i track |
+| `lc/05-control-flow-for` | @for i track | 
 | `lc/06-control-flow-if` | @if i @else |
 | `lc/07-property-binding` | [ ] Property Binding |
 | `lc/08-event-binding` | ( ) Event Binding |
