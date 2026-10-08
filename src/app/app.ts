@@ -41,8 +41,8 @@ export class App {
     {'Name' : 'Porduct 4',
       'Descripcion':'',
       'Price': 11,
-      'URL' :'',
-      'Promo':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL4ZVql_0tqXvpO2bDlV1CPmrp_EKrmXpe3BuO0n-Hag&s=10',
+      'URL' :'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ZXTTglu6XbhhX51s5C4cvnEFWd3HpmgJTJWuy9ko6w&s=10',
+      'Promo':'',
       'activado': false
     },
    
@@ -126,8 +126,17 @@ export class App {
   categoria='';
   foto =''; 
 
-  addProduct(nom:any ,preu:any,estoc:any){
-    alert(nom+" "+preu+" "+estoc)
+  addProduct(nom:any ,preu:any,estoc:any,categoria:any,foto:any){
+    alert(nom+" "+preu+" "+estoc+" "+categoria+" "+foto) ; 
+
+    this.Prodcutes.push({
+       'id': 1,
+      'nom' : nom,
+      'preu':preu,
+      'estoc':estoc,
+      'categoria':categoria,
+      'foto':foto 
+    },)
   }
   
 }

@@ -44,7 +44,7 @@
             @if(nom.length<5 ){
             <p style="color: red;"> {{nom}} longitud de texto muy corto</p>
             }
-            @if(!nom.includes('@gmail.com')){
+            @if(!nom.includes('Motor')){
               <p style="color: red;">{{nom}} No es formato de correo</p>
             }@else{
               <p style="color: green;">OK</p>
@@ -86,10 +86,10 @@
               <select
                 name="categoria"
                 id="categoria"
-                class="form-select">
+                class="form-select" [(ngModel)]="categoria" >
 
                 @for(cat of categorias; track cat.id) {
-                  <option value="{{cat.nom}}">
+                  <option value="{{cat.nom}}" >
                     {{cat.nom}}
                   </option >
                 }
@@ -98,16 +98,16 @@
             </div>
 
             <div class="mb-4">
-              <label for="file" class="form-label">Foto de Producto</label>
+              <label for="file" class="form-label">Url de Producto</label>
               <input
-                type="file"
+                type="text"
                 name="file"
                 id="file"
-                class="form-control" >
+                class="form-control" [(ngModel)]="foto">
             </div>
 
             <div class="d-grid">
-              <button  type="button"  class="btn btn-primary"  (click)="addProduct(nom,preu,estoc)">Añadir Producto</button>
+              <button  type="button"  class="btn btn-primary"  (click)="addProduct(nom,preu,estoc,categoria,foto)">Añadir Producto</button>
             </div>
 
           </form>
