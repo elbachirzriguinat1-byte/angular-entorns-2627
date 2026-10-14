@@ -74,6 +74,7 @@ export class App {
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcdH9RLVpqp_ew4JxwLHKYzeJ5qoRZMQt15CMlN1f6A&s=10'
     ,
     'disponible':true,
+    'descripcio':'ggggggggggggggggggggggggggggggggggggggggggg',
     'special':false
     },
 
@@ -159,11 +160,9 @@ export class App {
     },)
   }
 
-  AddSpecial(special:any){
-  special=!special ;
-  if(special == true){
-  alert('has añadido producto a especiales');
-  }
+  AddSpecial(Prodcutes:any){
+  Prodcutes.special=!Prodcutes.special; 
+  
   }
   toggleDesc():void {
 this.special=!this.special;
