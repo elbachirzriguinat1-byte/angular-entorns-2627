@@ -8,6 +8,7 @@ export interface Producte{
     estoc : number;
     categoria : string;
     foto:string
-    //disponible: boolean;
-    //descripcio ?: string; //el ? vol dir que és opcional
+    disponible?: boolean;
+    descripcio ?: string; //el ? vol dir que és opcional
+    special?:boolean;
 }

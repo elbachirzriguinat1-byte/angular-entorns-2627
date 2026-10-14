@@ -3,10 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule, NgModel } from '@angular/forms'; 
 import { Producte } from './interfaces/producte';
 import { Catgeoria } from './interfaces/categoria';
-
+import { Info } from './componentes/info/info';
+import { Capcalera } from './componentes/capcalera/capcalera';
+import { Tarjetas } from './componentes/tarjetas/tarjetas';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule],
+  imports: [RouterOutlet,FormsModule,Capcalera,Info,Tarjetas],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -70,28 +72,41 @@ export class App {
       'estoc':100,
       'categoria':'Catgeoria 1',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcdH9RLVpqp_ew4JxwLHKYzeJ5qoRZMQt15CMlN1f6A&s=10'
+    ,
+    'disponible':true,
+    'special':false
     },
+
 
     { 'id':2,
       'nom':'Producto 2',
-      'preu':10,
+      'preu':0,
       'estoc':250,
       'categoria':'categoria 2',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxXpd8gTnsDOBcUkdNLc5vJ9fEwmkS357J7cL4pjoYAQ&s=10'
+    ,
+    'disponible':true ,
+    'special':false
     },
      {'id':3,
       'nom':'Producto 3',
-      'preu':10,
+      'preu':101,
       'estoc':250,
       'categoria':'categoria 3',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFl8GynNbpQC94f_yEx61DKup5bDwhMMTBWEJuF4IiQ&s=10'
+   ,
+    'disponible':true ,
+    'special':false
     },
      {'id':4,
       'nom':'Producto 4',
-      'preu':10,
+      'preu':19,
       'estoc':250,
       'categoria':'categoria 4',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvLcYhBjNbPju1sKAqEKd-gH81PlDTNhpISE0Tj3p0g&s=10'
+   ,
+    'disponible':true ,
+    'special':false
     },
      {'id':5,
       'nom':'Producto 5',
@@ -99,6 +114,9 @@ export class App {
       'estoc':250,
       'categoria':'categoria 5',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJ4LGxDGvxKohzMwRlBlEvzmds9UOR90Nj_6fhlDd7Q&s=10'
+   ,
+    'disponible':true ,
+    'special':false
     },
   ]; 
   
@@ -126,11 +144,13 @@ export class App {
   categoria='';
   foto =''; 
 
+  special=false;
+
   addProduct(nom:any ,preu:any,estoc:any,categoria:any,foto:any){
     alert(nom+" "+preu+" "+estoc+" "+categoria+" "+foto) ; 
 
     this.Prodcutes.push({
-       'id': 1,
+      'id': 1,
       'nom' : nom,
       'preu':preu,
       'estoc':estoc,
@@ -138,5 +158,16 @@ export class App {
       'foto':foto 
     },)
   }
+
+  AddSpecial(special:any){
+  special=!special ;
+  if(special == true){
+  alert('has añadido producto a especiales');
+  }
+  }
+  toggleDesc():void {
+this.special=!this.special;
+
+}
   
 }

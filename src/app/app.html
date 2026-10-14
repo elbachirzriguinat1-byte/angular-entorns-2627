@@ -1,25 +1,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-capcalera></app-capcalera>
 <div class="container mt-4">
 
-  <h1 class="text-center mb-4">{{ title }}</h1>
 
-  <div class="card shadow-sm mb-4">
-    <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">Ciudades</h4>
-    </div>
-
-    <div class="card-body">
-      <div class="row">
-        @for(Ciutat of ciutats; track Ciutat) {
-          <div class="col-md-4 col-lg-3 mb-3">
-            <div class="alert alert-info mb-0 text-center">
-              {{ Ciutat }}
-            </div>
-          </div>
-        }
-      </div>
-    </div>
-  </div>
+ 
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
@@ -122,9 +106,23 @@
 
   <div class="row">
     @for(Producte of Prodcutes; track Producte.id; let i = $index) {
+      @if(Producte.estoc >0 && Producte.disponible){
       <div class="col-md-6 col-lg-4 mb-4">
         <div class="card h-100 shadow-sm">
           <div class="card-body">
+            @if(Producte.preu == 0 ){
+            <div class="badge bg-success position-absolute top-0 start-0 m-3"> GRATUITO</div><br>
+            }@else if(Producte.preu < 20 ){
+            <div class="badge bg-danger position-absolute top-0 start-0 m-3">
+            Producto Oferta
+            </div>
+         
+            }@else if(Producte.preu >100){
+             <div class="badge badge-premium position-absolute top-0 start-0 m-3">
+              PREMUIM
+             </div>
+            }
+
             <h5 class="card-title">
               {{ Producte.nom }}
             </h5>
@@ -149,12 +147,21 @@
               <strong>Categoría:</strong>
               <img src="{{Producte.foto}}" alt="" class="img-thumbnail">
             </p>
+            <br>
+            <p class="card-text">
+              <strong>Especial : {{Producte.special}}</strong><br>
+              <button (click)="AddSpecial(Producte.special)">Añadir a Especial</button>
+            </p>
           </div>
         </div>
       </div>
+      }
     }
   </div>
-
+  <app-tarjetas></app-tarjetas>
+<footer>
+  <app-info></app-info>
+</footer>
 </div>
 
 <router-outlet />
