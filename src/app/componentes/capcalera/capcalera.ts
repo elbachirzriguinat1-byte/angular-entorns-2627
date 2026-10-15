@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './capcalera.html',
   styleUrl: './capcalera.css',
 })
-export class Capcalera {}
+export class Capcalera {
+
+
+  
+}

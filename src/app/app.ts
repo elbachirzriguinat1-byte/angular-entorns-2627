@@ -154,7 +154,7 @@ export class App {
     alert(nom+" "+preu+" "+estoc+" "+categoria+" "+foto) ; 
 
     this.Prodcutes.push({
-      'id': 1,
+      'id': 9,
       'nom' : nom,
       'preu':preu,
       'estoc':estoc,

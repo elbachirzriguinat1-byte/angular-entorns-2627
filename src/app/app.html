@@ -13,88 +13,84 @@
 
           <h2 class="text-center mb-4">Añadir Producto</h2>
 
-          <form action="">
+         <div class="container py-5">
 
-            <div class="mb-3">
-              <label for="nom" class="form-label">Nombre Producto</label>
-              <input
-                type="text"
-                name="nom"
-                id="nom"
-                class="form-control"
-                placeholder="Introduce el nombre del producto" [(ngModel)]="nom">
-            </div>
-            @if(nom){
-            @if(nom.length<5 ){
-            <p style="color: red;"> {{nom}} longitud de texto muy corto</p>
+    <div class="card-header bg-dark text-white py-3">
+      <h4 class="mb-0">
+        <i class="bi bi-plus-circle text-warning me-2"></i>Añadir producto
+      </h4>
+    </div>
+
+    <div class="card-body p-9">
+      <form>
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label for="nom" class="form-label fw-bold">Nombre del producto</label>
+            <input type="text" id="nom" name="nom" class="form-control"
+              placeholder="Ej. Motor BMW 320d" [(ngModel)]="nom">
+
+            @if (nom) {
+              @if (nom.length < 5) {
+                <small class="text-danger">El nombre debe tener al menos 5 caracteres.</small>
+              }
+              @if (!nom.includes('Motor')) {
+                <small class="text-danger d-block">El nombre debe incluir la palabra Motor.</small>
+              } @else if (nom.length >= 5) {
+                <small class="text-success d-block">
+                  <i class="bi bi-check-circle"></i> Nombre correcto
+                </small>
+              }
             }
-            @if(!nom.includes('Motor')){
-              <p style="color: red;">{{nom}} No es Un Motor</p>
-            }@else{
-              <p style="color: green;">OK</p>
-            }
-          }
-            <div class="mb-3">
-              <label for="desc" class="form-label">Descripción de Producto</label>
-              <textarea
-                name="desc"
-                id="desc"
-                class="form-control"
-                rows="3"
-                placeholder="Introduce la descripción" ></textarea>
+          </div>
+
+          <div class="col-md-6">
+            <label for="categoria" class="form-label fw-bold">Categoría</label>
+            <select id="categoria" name="categoria" class="form-select" [(ngModel)]="categoria">
+              <option value="">Selecciona una categoría</option>
+              @for (cat of categorias; track cat.id) {
+                <option [value]="cat.nom">{{ cat.nom }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label for="desc" class="form-label fw-bold">Descripción</label>
+            <textarea id="desc" name="desc" class="form-control" rows="3"
+              placeholder="Descripción del producto"></textarea>
+          </div>
+
+          <div class="col-md-4">
+            <label for="precio" class="form-label fw-bold">Precio (€)</label>
+            <div class="input-group">
+              <span class="input-group-text">€</span>
+              <input type="number" id="precio" name="precio" class="form-control"
+                placeholder="0.00" min="0" step="0.01" [(ngModel)]="preu">
             </div>
+          </div>
 
-            <div class="mb-3">
-              <label for="precio" class="form-label">Precio</label>
-              <input
-                type="number"
-                name="precio"
-                id="precio"
-                class="form-control"
-                placeholder="0.00"
-                step="0.01" [(ngModel)]="preu">
-            </div>
+          <div class="col-md-4">
+            <label for="estoc" class="form-label fw-bold">Stock</label>
+            <input type="number" id="estoc" name="estoc" class="form-control"
+              placeholder="Unidades" min="0" [(ngModel)]="estoc">
+          </div>
 
-            <div class="mb-3">
-              <label for="estoc" class="form-label">Unidades en stock</label>
-              <input
-                type="number"
-                name="estoc"
-                id="estoc"
-                class="form-control"
-                placeholder="Cantidad" [(ngModel)]="estoc">
-            </div>
+          <div class="col-md-4">
+            <label for="foto" class="form-label fw-bold">URL de la imagen</label>
+            <input type="url" id="foto" name="foto" class="form-control"
+              placeholder="https://..." [(ngModel)]="foto">
+          </div>
 
-            <div class="mb-3">
-              <label for="categoria" class="form-label">Categoría</label>
-              <select
-                name="categoria"
-                id="categoria"
-                class="form-select" [(ngModel)]="categoria" >
+          <div class="col-12">
+            <button type="button" class="btn btn-warning fw-bold w-100 py-2"
+              (click)="addProduct(nom, preu, estoc, categoria, foto)">
+              <i class="bi bi-plus-lg me-2"></i>Añadir producto
+            </button>
+          </div>
 
-                @for(cat of categorias; track cat.id) {
-                  <option value="{{cat.nom}}" >
-                    {{cat.nom}}
-                  </option >
-                }
-
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label for="file" class="form-label">Url de Producto</label>
-              <input
-                type="text"
-                name="file"
-                id="file"
-                class="form-control" [(ngModel)]="foto">
-            </div>
-
-            <div class="d-grid">
-              <button  type="button"  class="btn btn-primary"  (click)="addProduct(nom,preu,estoc,categoria,foto)">Añadir Producto</button>
-            </div>
-
-          </form>
+        </div>
+      </form>
+    </div>
 
         </div>
       </div>
