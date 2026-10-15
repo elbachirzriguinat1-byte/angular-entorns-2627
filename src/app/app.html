@@ -150,7 +150,8 @@
             <br>
             <p class="card-text">
               <strong>Especial : {{Producte.special}}     </strong><br>
-              <button (click)="AddSpecial(Producte)">{{Producte.special ?'quitar de special':'añadir a especial'}}</button>
+              <button (click)="AddSpecial(Producte)">{{Producte.special ?'Ocultar descripcion':'Mostrar descripcio'}}</button>
+              <br><button (click)="AddFavorito(Producte)">Añadir a Favoritos</button>
             </p>
             @if(Producte.special){
               <p style="color: gray;">{{Producte.descripcio}}</p>

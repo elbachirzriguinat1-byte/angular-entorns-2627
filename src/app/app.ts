@@ -67,52 +67,55 @@ export class App {
 
   Prodcutes : Producte [] = [
     { 'id':1,
-      'nom':'Producto 1',
-      'preu':22,
-      'estoc':100,
+      'nom':' Motor v4',
+      'preu':500,
+      'estoc':28,
       'categoria':'Catgeoria 1',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcdH9RLVpqp_ew4JxwLHKYzeJ5qoRZMQt15CMlN1f6A&s=10'
     ,
     'disponible':true,
-    'descripcio':'ggggggggggggggggggggggggggggggggggggggggggg',
+    'descripcio':'El motor V4 es un tipo de motor de explosión de cuatro cilindros con disposición en V. La mayor complejidad mecánica que implica su diseño con respecto a los motores de cuatro cilindros en línea, hace que sea una configuración relativamente poco utilizada. Su principal ventaja es su disposición compacta, lo que lo hace adecuado en aquellos casos en los que se dispone de un espacio reducido para alojar el motor.',
     'special':false
     },
-
+    
 
     { 'id':2,
-      'nom':'Producto 2',
+      'nom':'Motor v6',
       'preu':0,
       'estoc':250,
       'categoria':'categoria 2',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxXpd8gTnsDOBcUkdNLc5vJ9fEwmkS357J7cL4pjoYAQ&s=10'
     ,
     'disponible':true ,
+    'descripcio':'Motor V6 es una configuración de motor de combustión interna en la que seis cilindros están dispuestos en dos bancadas de tres cilindros unidas por el cigüeñal debajo de estos, formando una "V". Estos pueden ser tanto de ciclo Otto, como de Diésel.',
     'special':false
     },
      {'id':3,
-      'nom':'Producto 3',
+      'nom':'Motor v8',
       'preu':101,
       'estoc':250,
       'categoria':'categoria 3',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFl8GynNbpQC94f_yEx61DKup5bDwhMMTBWEJuF4IiQ&s=10'
    ,
     'disponible':true ,
+    'descripcio':'El V8 es una configuración muy común para camionetas, automóviles de gran tamaño y en vehículos tipo "muscle cars". Su cilindrada en raras ocasiones es inferior a los 3.0L y ha llegado a superar los 10.4L.Fue creado por el francés Léon Levavasseurcita requeridaHa servido como motor principal para los autos estadounidenses desde que Ford Motor Company desarrolló la revolucionaria máquina plana de 8 cilindros en V para su cupé Ford en 1932 Desde entonces, Chevrolet ha producido millones de V8 de bloques grandes y pequeños, incluyendo el estándar de todos los motores, mientras que Chrysler perfeccionó los motores v8 en una versión de Hemi para crear autos de más potencia',
     'special':false
     },
      {'id':4,
-      'nom':'Producto 4',
+      'nom':'Motor v10',
       'preu':19,
       'estoc':250,
       'categoria':'categoria 4',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvLcYhBjNbPju1sKAqEKd-gH81PlDTNhpISE0Tj3p0g&s=10'
    ,
     'disponible':true ,
+    'descripcio':'Los dos filas de cinco cilindros del V10 tienen normalmente una abertura de 60° a 90° entre las dos filas. Cada fila es un bloque de cinco cilindros en línea cada una, con una configuración que se caracteriza por su funcionamiento sin vibraciones, por lo que no necesita árboles contrarrotantes de equilibrado. Por lo tanto, este se caracteriza por su mayor fineza de funcionamiento debido a que las explosiones de los cilindros se hacen en intervalos de tiempo menores, produciéndose una por cada 72­° de giro del cigüeñal en el caso de un ciclo de cuatro tiempos, lo que también posibilita el funcionamiento del motor a pocas revoluciones, con menos de 1500 rpm sin vibraciones ni tendencia a calarse.',
     'special':false
     },
      {'id':5,
-      'nom':'Producto 5',
-      'preu':10,
-      'estoc':250,
+      'nom':'Motor v12',
+      'preu':10000,
+      'estoc':10,
       'categoria':'categoria 5',
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJ4LGxDGvxKohzMwRlBlEvzmds9UOR90Nj_6fhlDd7Q&s=10'
    ,
@@ -167,6 +170,9 @@ export class App {
   toggleDesc():void {
 this.special=!this.special;
 
+}
+AddFavorito(Prodcutes:any){
+  
 }
   
 }
