@@ -75,7 +75,8 @@ export class App {
     ,
     'disponible':true,
     'descripcio':'El motor V4 es un tipo de motor de explosión de cuatro cilindros con disposición en V. La mayor complejidad mecánica que implica su diseño con respecto a los motores de cuatro cilindros en línea, hace que sea una configuración relativamente poco utilizada. Su principal ventaja es su disposición compacta, lo que lo hace adecuado en aquellos casos en los que se dispone de un espacio reducido para alojar el motor.',
-    'special':false
+    'special':false,
+    'Favorito':false
     },
     
 
@@ -88,7 +89,8 @@ export class App {
     ,
     'disponible':true ,
     'descripcio':'Motor V6 es una configuración de motor de combustión interna en la que seis cilindros están dispuestos en dos bancadas de tres cilindros unidas por el cigüeñal debajo de estos, formando una "V". Estos pueden ser tanto de ciclo Otto, como de Diésel.',
-    'special':false
+    'special':false,
+    'Favorito':false
     },
      {'id':3,
       'nom':'Motor v8',
@@ -99,7 +101,8 @@ export class App {
    ,
     'disponible':true ,
     'descripcio':'El V8 es una configuración muy común para camionetas, automóviles de gran tamaño y en vehículos tipo "muscle cars". Su cilindrada en raras ocasiones es inferior a los 3.0L y ha llegado a superar los 10.4L.Fue creado por el francés Léon Levavasseurcita requeridaHa servido como motor principal para los autos estadounidenses desde que Ford Motor Company desarrolló la revolucionaria máquina plana de 8 cilindros en V para su cupé Ford en 1932 Desde entonces, Chevrolet ha producido millones de V8 de bloques grandes y pequeños, incluyendo el estándar de todos los motores, mientras que Chrysler perfeccionó los motores v8 en una versión de Hemi para crear autos de más potencia',
-    'special':false
+    'special':false,
+    'Favorito':false
     },
      {'id':4,
       'nom':'Motor v10',
@@ -110,7 +113,8 @@ export class App {
    ,
     'disponible':true ,
     'descripcio':'Los dos filas de cinco cilindros del V10 tienen normalmente una abertura de 60° a 90° entre las dos filas. Cada fila es un bloque de cinco cilindros en línea cada una, con una configuración que se caracteriza por su funcionamiento sin vibraciones, por lo que no necesita árboles contrarrotantes de equilibrado. Por lo tanto, este se caracteriza por su mayor fineza de funcionamiento debido a que las explosiones de los cilindros se hacen en intervalos de tiempo menores, produciéndose una por cada 72­° de giro del cigüeñal en el caso de un ciclo de cuatro tiempos, lo que también posibilita el funcionamiento del motor a pocas revoluciones, con menos de 1500 rpm sin vibraciones ni tendencia a calarse.',
-    'special':false
+    'special':false,
+    'Favorito':false
     },
      {'id':5,
       'nom':'Motor v12',
@@ -120,7 +124,8 @@ export class App {
       'foto':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJ4LGxDGvxKohzMwRlBlEvzmds9UOR90Nj_6fhlDd7Q&s=10'
    ,
     'disponible':true ,
-    'special':false
+    'special':false,
+    'Favorito':false
     },
   ]; 
   
@@ -172,7 +177,8 @@ this.special=!this.special;
 
 }
 AddFavorito(Prodcutes:any){
-  
+Prodcutes.Favorito =! Prodcutes.Favorito ; 
+
 }
   
 }

@@ -11,4 +11,5 @@ export interface Producte{
     disponible?: boolean;
     descripcio ?: string; //el ? vol dir que és opcional
     special?:boolean;
+    Favorito?:boolean ; 
 }

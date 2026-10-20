@@ -158,6 +158,70 @@
       }
     }
   </div>
+  <h2 class="mb-3">Productos Favoritos : </h2>
+
+  <div class="row">
+    @for(Producte of Prodcutes; track Producte.id; let i = $index) {
+      @if(Producte.Favorito){
+      @if(Producte.estoc >0 && Producte.disponible){
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            @if(Producte.preu == 0 ){
+            <div class="badge bg-success position-absolute top-0 start-0 m-3"> GRATUITO</div><br>
+            }@else if(Producte.preu < 20 ){
+            <div class="badge bg-danger position-absolute top-0 start-0 m-3">
+            Producto Oferta
+            </div>
+         
+            }@else if(Producte.preu >100){
+             <div class="badge badge-premium position-absolute top-0 start-0 m-3">
+              PREMUIM
+             </div>
+            }
+
+            <h5 class="card-title">
+              {{ Producte.nom }}
+            </h5>
+
+            <p class="card-text">
+              <strong>Precio:</strong> {{ Producte.preu }} €
+            </p>
+
+            <p class="card-text">
+              <strong>Categoría:</strong>
+              <span class="badge bg-secondary">
+                {{ Producte.categoria }}
+              </span>
+            </p>
+            <p class="card-text">
+              <strong>Stock:</strong>
+              <span class="badge bg-secondary">
+                {{ Producte.estoc }}
+              </span>
+            </p>
+            <p class="card-text">
+              <strong>Categoría:</strong>
+              <img src="{{Producte.foto}}" alt="" class="img-thumbnail">
+            </p>
+            <br>
+            <p class="card-text">
+              <strong>Especial : {{Producte.special}}     </strong><br>
+              <button (click)="AddSpecial(Producte)">{{Producte.special ?'Ocultar descripcion':'Mostrar descripcio'}}</button>
+              <br><button (click)="AddFavorito(Producte)">Añadir a Favoritos</button>
+            </p>
+            @if(Producte.special){
+              <p style="color: gray;">{{Producte.descripcio}}</p>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    }@else{
+      <p>No hay Productos favoritos aun .</p>
+    }
+  }
+  </div>
   <app-tarjetas></app-tarjetas>
 <footer>
   <app-info></app-info>
