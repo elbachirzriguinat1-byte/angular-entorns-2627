@@ -6,9 +6,10 @@ import { Catgeoria } from './interfaces/categoria';
 import { Info } from './componentes/info/info';
 import { Capcalera } from './componentes/capcalera/capcalera';
 import { Tarjetas } from './componentes/tarjetas/tarjetas';
+import { Botiga } from './bindings/botiga/botiga';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,Capcalera,Info,Tarjetas],
+  imports: [RouterOutlet,FormsModule,Capcalera,Info,Tarjetas,Botiga],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

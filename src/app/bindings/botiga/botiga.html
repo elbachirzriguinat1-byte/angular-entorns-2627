@@ -1,0 +1,24 @@
+<p>botiga works!</p>
+<h2>Bindings en Angular </h2>
+<!--<p> INTERPOLACION : TS A HTML </p> 
+
+PROOERTYBINDING: [propietat]="expr" TS -> HTML (propietat DOM)
+[DISABLED] = "true"      -> ANGULAR EVALUARA E BOOLEAN Y ASIGNARA EL BOOLEAN A LA PROPIEDAD 
+
+-->
+
+<section class="botiga">
+    <h1>{{title}}</h1>
+    
+    <div class="graella">
+ @for(producte of productes;track producte.id){
+     <p>[class.nom]</p>
+     <article class="fitxa" class="fitxa" [class.destacat]="producteDestacat(producte)" [class.esgotat]="productesgotat(producte)">
+     <h2>{{producte.nom}}</h2>
+     <p>{{producte.precio}}</p>
+     <button class="btn-warning"  disabled="!teEstoc(producte)">Afegir al carret</button>
+     </article>
+    }
+    </div>
+   
+</section>
