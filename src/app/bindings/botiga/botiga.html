@@ -1,24 +1,171 @@
-<p>botiga works!</p>
-<h2>Bindings en Angular </h2>
-<!--<p> INTERPOLACION : TS A HTML </p> 
 
-PROOERTYBINDING: [propietat]="expr" TS -> HTML (propietat DOM)
-[DISABLED] = "true"      -> ANGULAR EVALUARA E BOOLEAN Y ASIGNARA EL BOOLEAN A LA PROPIEDAD 
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="botiga.css">
+<div class="tienda">
 
--->
-
-<section class="botiga">
-    <h1>{{title}}</h1>
-    
-    <div class="graella">
- @for(producte of productes;track producte.id){
-     <p>[class.nom]</p>
-     <article class="fitxa" class="fitxa" [class.destacat]="producteDestacat(producte)" [class.esgotat]="productesgotat(producte)">
-     <h2>{{producte.nom}}</h2>
-     <p>{{producte.precio}}</p>
-     <button class="btn-warning"  disabled="!teEstoc(producte)">Afegir al carret</button>
-     </article>
-    }
+  <!-- CABECERA DE LA TIENDA -->
+  <section class="hero-tienda">
+    <div>
+      <span class="hero-etiqueta">NUEVA COLECCIÓN</span>
+      <h1>{{title}}</h1>
+      <p>Encuentra tus productos favoritos al mejor precio.</p>
     </div>
-   
-</section>
+
+    <div class="hero-icono">
+      <i class="bi bi-bag-heart"></i>
+    </div>
+  </section>
+
+  <div class="row">
+
+    <main class="col-12 col-xl-9">
+
+      <div class="catalogo-cabecera">
+      
+        <span class="contador-productos">
+          {{productes.length}} productos
+        </span>
+      </div>
+
+      <div class="row">
+
+        @for(producte of productes; track producte.id) {
+          <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
+
+            <article class="producto-card"
+                     [class.producto-destacado]="producteDestacat(producte)"
+                     [class.producto-agotado]="productesgotat(producte)">
+
+              <div class="producto-imagen">
+
+                @if(producte.imatgeUrl) {
+                  <img [src]="producte.imatgeUrl"
+                       [alt]="producte.nom">
+                } @else {
+                  <div class="imagen-vacia">
+                    <i class="bi bi-box-seam"></i>
+                  </div>
+                }
+
+                @if(producteDestacat(producte)) {
+                  <span class="etiqueta-destacado">
+                    <i class="bi bi-star-fill"></i> Destacado
+                  </span>
+                }
+
+                @if(productesgotat(producte)) {
+                  <span class="etiqueta-agotado">
+                    Agotado
+                  </span>
+                }
+
+              </div>
+
+              <div class="producto-info">
+
+                <span class="producto-categoria">
+                  {{producte.categoria}}
+                </span>
+
+                <h3>{{producte.nom}}</h3>
+
+                <div class="producto-precio-stock">
+                  <span class="producto-precio">
+                    {{producte.precio}} €
+                  </span>
+
+                  <span class="producto-stock">
+                    Stock: {{producte.estoc}}
+                  </span>
+                </div>
+
+                <button
+                  class="btn-anadir"
+                  [disabled]="!teEstoc(producte)"
+                  (click)="afegir(producte)">
+
+                  <i class="bi bi-cart-plus"></i>
+                  Añadir al carrito
+
+                </button>
+
+              </div>
+
+            </article>
+          </div>
+        }
+
+      </div>
+    </main>
+
+    <aside class="col-12 col-xl-3">
+
+      <div class="carrito-panel">
+
+        <div class="carrito-header">
+          <div class="carrito-titulo">
+            <div class="carrito-icono">
+              <i class="bi bi-bag"></i>
+            </div>
+
+            <div>
+              <h2>Mi carrito</h2>
+              <p>Tus productos seleccionados</p>
+            </div>
+          </div>
+
+          <span class="carrito-contador">
+            {{carret.length}}
+          </span>
+        </div>
+
+        <div class="carrito-contenido">
+
+          @if(carret.length === 0) {
+            <div class="carrito-vacio">
+              <div class="carrito-vacio-icono">
+                <i class="bi bi-bag"></i>
+              </div>
+
+              <h3>Tu carrito está vacío</h3>
+              <p>Añade productos y aparecerán aquí.</p>
+            </div>
+          }
+
+          @for(p of carret; track p.id) {
+
+            <div class="carrito-producto">
+
+              <div class="carrito-producto-icono">
+                <i class="bi bi-box-seam"></i>
+              </div>
+
+              <div class="carrito-producto-info">
+                <h3>{{p.nom}}</h3>
+                <span>Referencia #{{p.id}}</span>
+                <strong>{{p.precio}} €</strong>
+              </div>
+              <button (click)="Cantidad(p)">+</button> <br><span>{{cantidad}}</span>
+            </div>
+          }
+                    <p>Total : </p> {{total}} <span>$</span>
+
+        </div>
+
+        <div class="carrito-pie">
+          
+
+          <button class="btn-ver-carrito" class="Total_precio()">
+            Ver Total
+            <i class="bi bi-arrow-right">{{Total_precio()}}</i>
+          </button>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</div>

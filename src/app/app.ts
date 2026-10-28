@@ -9,7 +9,7 @@ import { Tarjetas } from './componentes/tarjetas/tarjetas';
 import { Botiga } from './bindings/botiga/botiga';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,Capcalera,Info,Tarjetas,Botiga],
+  imports: [RouterOutlet,FormsModule,Capcalera,Botiga],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
