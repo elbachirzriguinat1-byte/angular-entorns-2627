@@ -30,10 +30,11 @@ productesgotat(producte:ProducteLab):boolean {
 
  /*classesFitxa(producte:ProducteLab):string{
   const classes = ['fitxa']; 
-
+  
   
  }*/
  total =0 ; 
+ mostrar_total= false ; 
  cantidad = 0 ; 
 
  cantidadCarrito(producte:ProducteLab) :any {
@@ -48,6 +49,7 @@ afegir(productes:ProducteLab) :any {
     this.cantidadCarrito(productes) ; 
     this.total = this.total+productes.precio ;
     productes.estoc = productes.estoc-1 ; 
+    productes.cantidad_carr=1 ;
     
   }else { 
         alert("Producto : "+productes.nom+" No tiene stock ") ;
@@ -62,19 +64,34 @@ afegir(productes:ProducteLab) :any {
   }
 }
 Total_precio():any {
-return this.total ; 
+    this.mostrar_total =!this.mostrar_total ; 
+
+if(!this.mostrar_total){
+  return this.total ; 
+}
 
 }
+
 Cantidad(productes : ProducteLab) : any {
 if(productes.estoc){
 productes.estoc=productes.estoc-1 ; 
-this.cantidad ++; 
+productes.cantidad_carr ++; 
     this.total = this.total+productes.precio ;
-
+     
 }else{
   alert("No quedan mas unidades de este producto en stock");
 }
 
+}
+Quitar_del_Carrito(productes:ProducteLab) {
+  if(productes.estoc){
+productes.estoc=productes.estoc+1 ; 
+productes.cantidad_carr --; 
+    this.total = this.total-productes.precio ;
+     
+}else{
+  alert("No quedan mas unidades de este producto en stock");
+}
 }
 
 

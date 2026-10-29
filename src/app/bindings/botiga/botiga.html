@@ -29,7 +29,7 @@
       </div>
 
       <div class="row">
-
+      
         @for(producte of productes; track producte.id) {
           <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
 
@@ -140,26 +140,37 @@
               <div class="carrito-producto-icono">
                 <i class="bi bi-box-seam"></i>
               </div>
+               <button type="button" class="btn btn-danger rounded-circle" (click)="Quitar_del_Carrito(p)">-</button> <br>
 
               <div class="carrito-producto-info">
                 <h3>{{p.nom}}</h3>
                 <span>Referencia #{{p.id}}</span>
                 <strong>{{p.precio}} €</strong>
               </div>
-              <button (click)="Cantidad(p)">+</button> <br><span>{{cantidad}}</span>
+              <button type="button" class="btn btn-success rounded-circle" (click)="Cantidad(p)">+</button><br> <br><hr> 
+              <span>{{p.cantidad_carr}}</span>
             </div>
           }
-                    <p>Total : </p> {{total}} <span>$</span>
+              <p>Total : </p> {{total}} <span>$</span>
 
         </div>
 
         <div class="carrito-pie">
           
 
-          <button class="btn-ver-carrito" class="Total_precio()">
-            Ver Total
-            <i class="bi bi-arrow-right">{{Total_precio()}}</i>
-          </button>
+         <button type="button" class="btn btn-warning" (click)="Total_precio()">
+         {{mostrar_total ? 'Ocultar el Total' : 'Mostrar total a pagar'}}
+         </button>
+              
+         @if (mostrar_total) {
+         <p>{{ total }} €</p>
+         @for(p of carret; track p.id) {
+
+         <img [src]="p.imatgeUrl" width="80px" alt=""><p>{{p.nom}}   <br>  {{p.precio}} $</p>
+        
+                   }
+        
+        }
         </div>
 
       </div>
