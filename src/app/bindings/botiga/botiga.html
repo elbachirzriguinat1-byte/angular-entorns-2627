@@ -3,7 +3,6 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="botiga.css">
 <div class="tienda">
-
   <!-- CABECERA DE LA TIENDA -->
   <section class="hero-tienda">
     <div>
@@ -31,6 +30,11 @@
       <div class="row">
       
         @for(producte of productes; track producte.id) {
+            <app-fitxa-producte [producte]="producte" [enCarret] = "alCarret(producte)" 
+            [afegir] = "afegir($event)"
+            [Treure] = "trueree($event)"
+            >
+
           <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
 
             <article class="producto-card"

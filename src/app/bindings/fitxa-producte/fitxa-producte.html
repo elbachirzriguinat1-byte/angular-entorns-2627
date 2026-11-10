@@ -1,0 +1,58 @@
+
+  @for(producte of productes; track producte.id) {
+          <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
+
+            <article [class]="clasesFitxa" [class.al-carret]="enCarret"
+                     [class.producto-destacado]="producteDestacat(producte)"
+                     [class.producto-agotado]="productesgotat(producte)">
+
+              <div class="producto-imagen">
+
+                @if(producte.imatgeUrl) {
+                  <img [src]="producte.imatgeUrl"
+                       [alt]="producte.nom">
+                } @else {
+                  <div class="imagen-vacia">
+                    <i class="bi bi-box-seam"></i>
+                  </div>
+                }
+
+                @if(producteDestacat(producte)) {
+                  <span class="etiqueta-destacado">
+                    <i class="bi bi-star-fill"></i> Destacado
+                  </span>
+                }
+
+                @if(productesgotat(producte)) {
+                  <span class="etiqueta-agotado">
+                    Agotado
+                  </span>
+                }
+
+              </div>
+
+              <div class="producto-info">
+
+                <span class="producto-categoria">
+                  {{producte.categoria}}
+                </span>
+
+                <h3>{{producte.nom}}</h3>
+
+                <div class="producto-precio-stock">
+                  <span class="producto-precio">
+                    {{producte.precio}} €
+                  </span>
+
+                  <span class="producto-stock">
+                    Stock: {{producte.estoc}}
+                  </span>
+                </div>
+
+             
+
+              </div>
+
+            </article>
+          </div>
+        }
