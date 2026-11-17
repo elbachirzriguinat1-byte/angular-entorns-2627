@@ -5,7 +5,7 @@ import { FitxaProducte } from '../fitxa-producte/fitxa-producte';
 
 @Component({
   selector: 'app-botiga',
-  imports: [FitxaProducte],
+  imports: [],
   templateUrl: './botiga.html',
   styleUrl: './botiga.css',
 })
@@ -94,6 +94,7 @@ productes.cantidad_carr --;
   alert("No quedan mas unidades de este producto en stock");
 }
 }
+
   classesFitxa (p: ProducteLab): string{
     const classes = ['fitxa'];
     if (p.precio > 500) classes.push('destacat');
@@ -109,7 +110,7 @@ productes.cantidad_carr --;
   urlFitxa (p: ProducteLab) : string{
     return `https://botiga.cat/producte/${p.id}`;
   }
-
+/*
   afegir(p: ProducteLab) : void {
     if (this.teEstoc(p) && !this.alCarret(p)){
       this.carret.push(p.id);
@@ -138,10 +139,13 @@ productes.cantidad_carr --;
     const text = this.cerca.trim().toLowerCase()
     return this.productes.filter(p => p.nom.toLowerCase().includes(text));
   }
+
+  
 //  Input and oUtput 
 //  Doble clic sobre una fitxa per marcar-la o desmarcar-la com a favorita.
 //  La llista de favorits és el pare. 
 //  Examen Test + desarrollo 
+*/ 
 
 }
  

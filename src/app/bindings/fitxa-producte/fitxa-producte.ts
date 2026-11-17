@@ -36,7 +36,7 @@ get teEstoc(): boolean {
   urlFitxa () : string{
     return `https://botiga.cat/producte/${this.producte.id}`;
   }
-  
+  /*
   alCarret (p: ProducteLab) : boolean {
     return this.carret.includes(p.id);
   }
@@ -54,5 +54,5 @@ get teEstoc(): boolean {
     this.Treure.emit(this.producte) ; 
 
   }
-
+*/
 }

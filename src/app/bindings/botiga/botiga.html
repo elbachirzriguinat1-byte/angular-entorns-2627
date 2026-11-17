@@ -1,186 +1,254 @@
 
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="botiga.css">
+
 <div class="tienda">
-  <!-- CABECERA DE LA TIENDA -->
-  <section class="hero-tienda">
-    <div>
-      <span class="hero-etiqueta">NUEVA COLECCIÓN</span>
-      <h1>{{title}}</h1>
-      <p>Encuentra tus productos favoritos al mejor precio.</p>
-    </div>
 
-    <div class="hero-icono">
-      <i class="bi bi-bag-heart"></i>
-    </div>
-  </section>
+    <section class="hero-tienda">
+        <div>
+            <span class="hero-etiqueta">NUEVA COLECCIÓN</span>
+            <p>Encuentra tus productos favoritos al mejor precio.</p>
+        </div>
 
-  <div class="row">
+        <div class="hero-icono">
+            <i class="bi bi-bag-heart"></i>
+        </div>
+    </section>
 
-    <main class="col-12 col-xl-9">
+    <div class="row">
 
-      <div class="catalogo-cabecera">
-      
-        <span class="contador-productos">
-          {{productes.length}} productos
-        </span>
-      </div>
+        <main class="col-12 col-xl-9">
 
-      <div class="row">
-      
-        @for(producte of productes; track producte.id) {
-            <app-fitxa-producte [producte]="producte" [enCarret] = "alCarret(producte)" 
-            [afegir] = "afegir($event)"
-            [Treure] = "trueree($event)"
-            >
-
-          <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
-
-            <article class="producto-card"
-                     [class.producto-destacado]="producteDestacat(producte)"
-                     [class.producto-agotado]="productesgotat(producte)">
-
-              <div class="producto-imagen">
-
-                @if(producte.imatgeUrl) {
-                  <img [src]="producte.imatgeUrl"
-                       [alt]="producte.nom">
-                } @else {
-                  <div class="imagen-vacia">
-                    <i class="bi bi-box-seam"></i>
-                  </div>
-                }
-
-                @if(producteDestacat(producte)) {
-                  <span class="etiqueta-destacado">
-                    <i class="bi bi-star-fill"></i> Destacado
-                  </span>
-                }
-
-                @if(productesgotat(producte)) {
-                  <span class="etiqueta-agotado">
-                    Agotado
-                  </span>
-                }
-
-              </div>
-
-              <div class="producto-info">
-
-                <span class="producto-categoria">
-                  {{producte.categoria}}
+            <div class="catalogo-cabecera">
+                <span class="contador-productos">
+                    {{ productes.length }} productos
                 </span>
+            </div>
 
-                <h3>{{producte.nom}}</h3>
+            <div class="row">
 
-                <div class="producto-precio-stock">
-                  <span class="producto-precio">
-                    {{producte.precio}} €
-                  </span>
+                @for (producte of productes; track producte.id) {
 
-                  <span class="producto-stock">
-                    Stock: {{producte.estoc}}
-                  </span>
+                    <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
+
+                        <article class="producto-card"
+                            [class.producto-destacado]="producteDestacat(producte)"
+                            [class.producto-agotado]="productesgotat(producte)">
+
+                            <div class="producto-imagen">
+
+                                @if (producte.imatgeUrl) {
+                                    <img [src]="producte.imatgeUrl"
+                                         [alt]="producte.nom">
+                                } @else {
+                                    <div class="imagen-vacia">
+                                        <i class="bi bi-box-seam"></i>
+                                    </div>
+                                }
+
+                                @if (producteDestacat(producte)) {
+                                    <span class="etiqueta-destacado">
+                                        <i class="bi bi-star-fill"></i>
+                                        Destacado
+                                    </span>
+                                }
+
+                                @if (productesgotat(producte)) {
+                                    <span class="etiqueta-agotado">
+                                        Agotado
+                                    </span>
+                                }
+
+                            </div>
+
+                            <div class="producto-info">
+
+                                <span class="producto-categoria">
+                                    {{ producte.categoria }}
+                                </span>
+
+                                <h3>{{ producte.nom }}</h3>
+
+                                <div class="producto-precio-stock">
+                                    <span class="producto-precio">
+                                        {{ producte.precio }} €
+                                    </span>
+
+                                    <span class="producto-stock">
+                                        Stock: {{ producte.estoc }}
+                                    </span>
+                                </div>
+
+                                <button
+                                    class="btn-anadir"
+                                    [disabled]="!teEstoc(producte)"
+                                    (click)="afegirr(producte)">
+
+                                    <i class="bi bi-cart-plus"></i>
+                                    Añadir al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </main>
+
+        <aside class="col-12 col-xl-3">
+
+            <div class="carrito-panel">
+
+                <div class="carrito-header">
+
+                    <div class="carrito-titulo">
+
+                        <div class="carrito-icono">
+                            <i class="bi bi-bag"></i>
+                        </div>
+
+                        <div>
+                            <h2>Mi carrito</h2>
+                            <p>Tus productos seleccionados</p>
+                        </div>
+
+                    </div>
+
+                    <span class="carrito-contador">
+                        {{ carret.length }}
+                    </span>
+
                 </div>
 
-                <button
-                  class="btn-anadir"
-                  [disabled]="!teEstoc(producte)"
-                  (click)="afegir(producte)">
+                <div class="carrito-contenido">
 
-                  <i class="bi bi-cart-plus"></i>
-                  Añadir al carrito
+                    @if (carret.length === 0) {
 
-                </button>
+                        <div class="carrito-vacio">
 
-              </div>
+                            <div class="carrito-vacio-icono">
+                                <i class="bi bi-bag"></i>
+                            </div>
 
-            </article>
-          </div>
-        }
+                            <h3>Tu carrito está vacío</h3>
+                            <p>Añade productos y aparecerán aquí.</p>
 
-      </div>
-    </main>
+                        </div>
 
-    <aside class="col-12 col-xl-3">
+                    } @else {
 
-      <div class="carrito-panel">
+                        @for (p of carret; track p.id) {
 
-        <div class="carrito-header">
-          <div class="carrito-titulo">
-            <div class="carrito-icono">
-              <i class="bi bi-bag"></i>
+                            <div class="carrito-producto">
+
+                                <div class="carrito-producto-icono">
+                                    <i class="bi bi-box-seam"></i>
+                                </div>
+
+                                <div class="carrito-producto-info">
+
+                                    <h3>{{ p.nom }}</h3>
+
+                                    <span>Referencia #{{ p.id }}</span>
+
+                                    <strong>{{ p.precio }} €</strong>
+
+                                </div>
+
+                                <div class="carrito-cantidad">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger rounded-circle"
+                                        (click)="Quitar_del_Carrito(p)">
+                                        -
+                                    </button>
+
+                                    <span>{{ p.cantidad_carr }}</span>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-success rounded-circle"
+                                        (click)="Cantidad(p)">
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        }
+
+                    }
+
+                    <div class="carrito-resumen">
+                        <p>Total:</p>
+                        <strong>{{ total }} €</strong>
+                    </div>
+
+                </div>
+
+                <div class="carrito-pie">
+
+                    <button
+                        type="button"
+                        class="btn btn-warning btn-block"
+                        (click)="Total_precio()">
+
+                        {{ mostrar_total
+                            ? 'Ocultar el Total'
+                            : 'Mostrar total a pagar' }}
+
+                    </button>
+
+                    @if (mostrar_total) {
+
+                        <div class="carrito-total">
+
+                            <h3>Total a pagar</h3>
+                            <h2>{{ total }} €</h2>
+
+                            @for (p of carret; track p.id) {
+
+                                <div class="resumen-producto">
+
+                                    @if (p.imatgeUrl) {
+                                        <img
+                                            [src]="p.imatgeUrl"
+                                            width="80"
+                                            [alt]="p.nom">
+                                    }
+
+                                    <div>
+                                        <p>{{ p.nom }}</p>
+                                        <span>
+                                            {{ p.cantidad_carr }} x
+                                            {{ p.precio }} €
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </div>
+
+                    }
+
+                </div>
+
             </div>
 
-            <div>
-              <h2>Mi carrito</h2>
-              <p>Tus productos seleccionados</p>
-            </div>
-          </div>
+        </aside>
 
-          <span class="carrito-contador">
-            {{carret.length}}
-          </span>
-        </div>
-
-        <div class="carrito-contenido">
-
-          @if(carret.length === 0) {
-            <div class="carrito-vacio">
-              <div class="carrito-vacio-icono">
-                <i class="bi bi-bag"></i>
-              </div>
-
-              <h3>Tu carrito está vacío</h3>
-              <p>Añade productos y aparecerán aquí.</p>
-            </div>
-          }
-
-          @for(p of carret; track p.id) {
-
-            <div class="carrito-producto">
-
-              <div class="carrito-producto-icono">
-                <i class="bi bi-box-seam"></i>
-              </div>
-               <button type="button" class="btn btn-danger rounded-circle" (click)="Quitar_del_Carrito(p)">-</button> <br>
-
-              <div class="carrito-producto-info">
-                <h3>{{p.nom}}</h3>
-                <span>Referencia #{{p.id}}</span>
-                <strong>{{p.precio}} €</strong>
-              </div>
-              <button type="button" class="btn btn-success rounded-circle" (click)="Cantidad(p)">+</button><br> <br><hr> 
-              <span>{{p.cantidad_carr}}</span>
-            </div>
-          }
-              <p>Total : </p> {{total}} <span>$</span>
-
-        </div>
-
-        <div class="carrito-pie">
-          
-
-         <button type="button" class="btn btn-warning" (click)="Total_precio()">
-         {{mostrar_total ? 'Ocultar el Total' : 'Mostrar total a pagar'}}
-         </button>
-              
-         @if (mostrar_total) {
-         <p>{{ total }} €</p>
-         @for(p of carret; track p.id) {
-
-         <img [src]="p.imatgeUrl" width="80px" alt=""><p>{{p.nom}}   <br>  {{p.precio}} $</p>
-        
-                   }
-        
-        }
-        </div>
-
-      </div>
-
-    </aside>
-
-  </div>
+    </div>
 
 </div>
