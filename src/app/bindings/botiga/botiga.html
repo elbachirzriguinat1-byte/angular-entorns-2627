@@ -30,13 +30,27 @@
             <div class="row">
 
                 @for (producte of productes; track producte.id) {
+                      <div class="producto-card">
 
+        <h3>{{ producte.nom }}</h3>
+
+        @if ($first) {
+            <span>Primer producto</span>
+        }
+
+        @if ($last) {
+            <span>Último producto</span>
+        }
+
+        <p>Posición: {{ $index + 1 }} de {{ $count }}</p>
+
+    </div>
                     <div class="col-12 col-sm-6 col-lg-4 col-xxl-3 mb-4">
-
+                       
                         <article class="producto-card"
                             [class.producto-destacado]="producteDestacat(producte)"
                             [class.producto-agotado]="productesgotat(producte)">
-
+                        
                             <div class="producto-imagen">
 
                                 @if (producte.imatgeUrl) {
