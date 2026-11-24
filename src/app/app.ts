@@ -168,7 +168,7 @@ export class App {
       'foto':foto 
     },)
   }
-
+   
   AddSpecial(Prodcutes:any){
   Prodcutes.special=!Prodcutes.special; 
   
