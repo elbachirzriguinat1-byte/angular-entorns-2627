@@ -1,0 +1,24 @@
+
+
+<h1>Mi tienda</h1>
+
+<div class="productos">
+
+  @for (producto of Productos_list; track producto.id) {
+
+    <app-componente-hijo
+      [producto]="producto"
+      (añadir)="agregarAlCarrito($event)">
+    </app-componente-hijo>
+    
+  }
+
+</div>
+
+<hr>
+
+<h2>Carrito: {{ carrito.length }} productos</h2>
+
+@for (producto of carrito; track $index) {
+  <p>{{ producto.Name }} - {{ producto.Price }} €</p>
+}

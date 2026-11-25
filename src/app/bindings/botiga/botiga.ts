@@ -25,9 +25,11 @@ carret : ProducteLab[] = [] ;
  producteDestacat(producte:ProducteLab):boolean {
   return producte.precio>100
 }
+
 productesgotat(producte:ProducteLab):boolean {
   return producte.precio <= 0 
 }
+
 
  /*classesFitxa(producte:ProducteLab):string{
   const classes = ['fitxa']; 
@@ -47,6 +49,7 @@ afegirr(productes:ProducteLab) :any {
   if(!this.carret.includes(productes)){
      if(this.teEstoc(productes) ) {
     this.carret.push(productes) ;  
+
     this.cantidadCarrito(productes) ; 
     this.total = this.total+productes.precio ;
     productes.estoc = productes.estoc-1 ; 
@@ -64,8 +67,9 @@ afegirr(productes:ProducteLab) :any {
     return ; 
   }
 }
+
 Total_precio():any {
-    this.mostrar_total =!this.mostrar_total ; 
+this.mostrar_total =!this.mostrar_total ; 
 
 if(!this.mostrar_total){
   return this.total ; 
@@ -102,7 +106,7 @@ productes.cantidad_carr --;
     if (p.estoc === 0) classes.push ('esgotat');
     return classes.join(' ');
   }
-
+   
   imatgeSegura (p: ProducteLab) : string {
     return p.imatgeUrl || 'https://placehold.co/300x180?text=Sense+imatge';
   }

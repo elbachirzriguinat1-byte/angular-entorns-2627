@@ -1,0 +1,16 @@
+<div class="card p-3 m-2" style="width: 250px">
+
+  <h3>{{ producto.Name }}</h3>
+
+  <p>Precio: {{ producto.Price }} €</p>
+  <img src="{{ producto.URL }}" alt="">
+
+  <button
+    class="btn btn-primary"
+    (click)="agregarAlCarrito()">
+
+    Añadir al carrito
+
+  </button>
+
+</div>

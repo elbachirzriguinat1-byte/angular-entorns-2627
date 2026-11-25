@@ -7,9 +7,11 @@ import { Info } from './componentes/info/info';
 import { Capcalera } from './componentes/capcalera/capcalera';
 import { Tarjetas } from './componentes/tarjetas/tarjetas';
 import { Botiga } from './bindings/botiga/botiga';
+import { ComponenetePadre } from './componenete-padre/componenete-padre';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,Capcalera,Botiga],
+  imports: [RouterOutlet,FormsModule,Capcalera,Botiga,ComponenetePadre],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
